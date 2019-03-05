@@ -17,7 +17,7 @@ There are a lot of options in matomo, here are the default tracking options.
 - page generation time
 
 
-## Dependencies
+## Peer Dependencies
 
 - router5 ^7.0.0
 
