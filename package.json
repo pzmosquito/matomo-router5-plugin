@@ -1,0 +1,34 @@
+{
+  "name": "matomo-router5-plugin",
+  "version": "0.0.1",
+  "description": "matomo router5 plugin",
+  "keywords": [
+    "matomo",
+    "router5",
+    "plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pzmosquito/matomo-router5-plugin.git"
+  },
+  "author": "pzmosquito",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pzmosquito/matomo-router5-plugin/issues"
+  },
+  "homepage": "https://github.com/pzmosquito/matomo-router5-plugin#readme",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "peerDependencies": {
+    "router5": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "~7.3.4",
+    "@babel/preset-env": "~7.3.1",
+    "babel-loader": "~8.0.5",
+    "webpack": "~4.29.6",
+    "webpack-cli": "~3.2.3"
+  }
+}

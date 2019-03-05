@@ -17,7 +17,12 @@ There are a lot of tracking features in matomo, here are the **default** ones.
 - page generation time
 
 
-## Peer Dependencies
+## Matomo requirements
+
+- matomo >= 3.0.2
+
+
+## NPM peer dependencies
 
 - router5 ^7.0.0
 
@@ -40,7 +45,6 @@ const router = createRouter();
 const matomoOptions = {
   siteUrl: "https://matomo.yoursite.com", // Required.
   siteId: 1, // Required.
-  legacyMode: true, // Optional. Set true for Matomo < 3.0.2 (default is false).
   features: [] // Optional. Additional tracking features.
 };
 
