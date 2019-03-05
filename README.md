@@ -2,7 +2,7 @@
 [Matomo](https://matomo.org) (formerly Piwik) integration with [router5](https://router5.js.org).
 
 
-## How does it work
+## How does it work?
 
 `matomo-router5-plugin` will send tracking data when router5 triggers `onTransitionSuccess`.
 
