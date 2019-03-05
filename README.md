@@ -9,7 +9,7 @@
 
 ## What does it track?
 
-There are a lot of options in matomo, here are the default tracking options.
+There are a lot of tracking features in matomo, here are the **default** ones.
 
 - 'from' state path
 - 'to' state path
@@ -31,15 +31,18 @@ npm install --save matomo-router5-plugin
 
 ## Usage
 
-for optional tracking features `trackingOptions`, see [matomo guide](https://developer.matomo.org/guides/tracking-javascript-guide). These features will be tracked along with default tracking options.
+for additional tracking features, see [matomo guide](https://developer.matomo.org/guides/tracking-javascript-guide). These features will be tracked along with default tracking features.
 ```js
 import matomoPlugin from "matomo-router5-plugin";
 
 const router = createRouter();
 
-const matomoSiteUrl = "https://matomo.yoursite.com";
-const matomoSiteId = 1;
-const trackingOptions = []; // optional tracking features
+const matomoOptions = {
+  siteUrl: "https://matomo.yoursite.com", // Required.
+  siteId: 1, // Required.
+  legacyMode: true, // Optional. Set true for Matomo < 3.0.2 (default is false)
+  features: []; // Optional. Additional tracking features
+};
 
-router.usePlugin(matomoPlugin(matomoSiteUrl, matomoSiteId, trackingOptions));
+router.usePlugin(matomoPlugin(matomoOptions));
 ```
