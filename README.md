@@ -9,7 +9,7 @@
 
 ## What does it track?
 
-There are a lot of tracking features in matomo, here are the **default** ones.
+There are a lot of tracking features in matomo, here are the **default** ones for this package.
 
 - 'from' state path
 - 'to' state path
