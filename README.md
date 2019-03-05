@@ -40,8 +40,8 @@ const router = createRouter();
 const matomoOptions = {
   siteUrl: "https://matomo.yoursite.com", // Required.
   siteId: 1, // Required.
-  legacyMode: true, // Optional. Set true for Matomo < 3.0.2 (default is false)
-  features: []; // Optional. Additional tracking features
+  legacyMode: true, // Optional. Set true for Matomo < 3.0.2 (default is false).
+  features: [] // Optional. Additional tracking features.
 };
 
 router.usePlugin(matomoPlugin(matomoOptions));
