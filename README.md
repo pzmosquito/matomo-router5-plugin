@@ -31,7 +31,7 @@ npm install --save matomo-router5-plugin
 
 ## Usage
 
-for optional tracking features `trackingOptions`, see [matomo guide](https://developer.matomo.org/guides/tracking-javascript-guide). These features will be tracked when router5 triggers `onTransitionSuccess`.
+for optional tracking features `trackingOptions`, see [matomo guide](https://developer.matomo.org/guides/tracking-javascript-guide). These features will be tracked along with default tracking options.
 ```js
 import matomoPlugin from "matomo-router5-plugin";
 
