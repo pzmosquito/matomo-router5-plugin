@@ -1,0 +1,27 @@
+{
+    "name": "MatomoRouter5Plugin",
+    "version": "0.0.1",
+    "description": "matomo router5 plugin",
+    "keywords": [
+        "router5",
+        "plugin",
+        "router5-plugin"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/pzmosquito/matomo-router5-plugin#readme",
+    "authors": [
+        {
+            "name": "pzmosquito",
+            "email": "pzmosquito@gmail.com"
+        }
+    ],
+    "require": {
+        "piwik": ">=3.0.2",
+        "router5": ">=7.0.0"
+    },
+    "support": {
+        "email": "pzmosquito@gmail.com",
+        "issues": "https://github.com/pzmosquito/matomo-router5-plugin/issues",
+        "source": "https://github.com/pzmosquito/matomo-router5-plugin"
+    }
+}
