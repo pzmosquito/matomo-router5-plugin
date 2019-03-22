@@ -54,3 +54,11 @@ const matomoOptions = {
 
 router.usePlugin(matomoPlugin(matomoOptions));
 ```
+
+You can pass in a function as tracking feature (since 0.2.0).
+
+```js
+features: [
+  ["setUserId", user => user ? user.name : "Anonymous User"]
+]
+```
