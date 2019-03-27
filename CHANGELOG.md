@@ -1,3 +1,7 @@
+### 0.2.1 (2019-03-27)
+
+- fix some tracking issue.
+
 ### 0.2.0 (2019-03-22)
 
 - enable function as tracking feature.

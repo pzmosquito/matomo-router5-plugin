@@ -1,5 +1,5 @@
-export default ({siteUrl, siteId, features = []}) => () => {
-    if (!siteUrl || !siteId) {
+export default ({trackerUrl, siteId, features = []}) => () => {
+    if (!trackerUrl || !siteId) {
         return {};
     }
 
@@ -7,7 +7,7 @@ export default ({siteUrl, siteId, features = []}) => () => {
     const elem = document.createElement("script");
     elem.async = true;
     elem.defer = true;
-    elem.src = `${siteUrl}/piwik.js`;
+    elem.src = `${trackerUrl}/piwik.js`;
 
     // insert piwik script tag before first script tag
     const firstScript = document.getElementsByTagName("script")[0];
@@ -18,41 +18,43 @@ export default ({siteUrl, siteId, features = []}) => () => {
 
     // set Matomo setting
     window._paq.push(
-        ["setTrackerUrl", `${siteUrl}/piwik.php`],
+        ["setTrackerUrl", `${trackerUrl}/piwik.php`],
         ["setSiteId", siteId]
     );
 
-    const enableTracking = [
-        // log a visit to this page
-        ["trackPageView"],
-
-        // measure outlinks and downloads
-        ["enableLinkTracking"]
-    ];
-
     return {
         onTransitionSuccess: (toState, fromState) => {
-            const defaultFeatures = [
+            // default features
+            window._paq.push(
                 // track new page view
                 ["setCustomUrl", toState.path],
 
                 // track referrel page url
                 ["setReferrerUrl", fromState ? fromState.path : ""],
 
+                // track state name as document title
+                ["setDocumentTitle", toState.name],
+
                 // remove all previously assigned custom variables
                 ["deleteCustomVariables", "page"],
 
                 // ppdating the page generation time
-                ["setGenerationTimeMs", 0]
-            ];
+                ["setGenerationTimeMs", 0],
+            );
 
-            const customFeatures = features.map(([key, val]) => {
-                return [key, typeof val === "function" ? val() : val];
+            // optional features
+            features.forEach(([key, val]) => {
+                window._paq.push([key, typeof val === "function" ? val() : val]);
             });
 
-            const tracked = defaultFeatures.concat(customFeatures).concat(enableTracking);
+            // start tracking
+            window._paq.push(
+                // log a visit to this page
+                ["trackPageView"],
 
-            window._paq.push(...tracked);
+                // measure outlinks and downloads
+                ["enableLinkTracking"],
+            );
         }
     };
 };

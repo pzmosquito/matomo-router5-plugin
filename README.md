@@ -15,8 +15,9 @@
 
 There are a lot of tracking features in matomo, here are the **default** ones for this package.
 
-- 'from' state path
-- 'to' state path
+- `setDocumentTitle` - 'from' state name as document title
+- `setReferrerUrl` - 'from' state path
+- `setCustomUrl` - 'to' state path
 - outlinks and downloads
 - page generation time
 
@@ -47,7 +48,7 @@ import matomoPlugin from "matomo-router5-plugin";
 const router = createRouter();
 
 const matomoOptions = {
-  siteUrl: "https://matomo.yoursite.com", // Required.
+  trackerUrl: "https://matomo.siteurl.com", // Required.
   siteId: 1, // Required.
   features: [] // Optional. Additional tracking features.
 };
