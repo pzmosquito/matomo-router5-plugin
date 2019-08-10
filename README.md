@@ -1,5 +1,4 @@
-# matomo-router5-plugin
-
+# matomo-router5-plugin &nbsp; [![npm version](https://img.shields.io/npm/v/matomo-router5-plugin)](https://www.npmjs.com/package/matomo-router5-plugin) [![npm bundle size](https://img.shields.io/bundlephobia/min/matomo-router5-plugin)](https://bundlephobia.com/result?p=matomo-router5-plugin)
 
 ## Description
 
