@@ -1,3 +1,7 @@
+### 0.2.2 (2019-08-10)
+
+- update some package to resolve security issue.
+
 ### 0.2.1 (2019-03-27)
 
 - fix some tracking issue.
