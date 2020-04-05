@@ -1,6 +1,6 @@
 {
   "name": "matomo-router5-plugin",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "matomo router5 plugin",
   "keywords": [
     "piwik",
@@ -23,7 +23,7 @@
     "build": "webpack"
   },
   "peerDependencies": {
-    "router5": "^7.0.0"
+    "router5": "^7.0.0 || ^8.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

@@ -28,7 +28,7 @@ There are a lot of tracking features in matomo, here are the **default** ones fo
 
 ## NPM peer dependencies
 
-- router5 ^7.0.0
+- router5 ^7.0.0 || ^8.0.0
 
 
 ## Installation
