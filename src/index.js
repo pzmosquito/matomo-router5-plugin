@@ -1,4 +1,59 @@
-export default ({trackerUrl, siteId, features = []}) => () => {
+const setTracking = (customUrl, referrerUrl, documentTitle, features) => {
+    // track new page view
+    if (customUrl) {
+        window._paq.push(["setCustomUrl", customUrl]);
+    }
+
+    // track referrel page url
+    if (referrerUrl) {
+        window._paq.push(["setReferrerUrl", referrerUrl]);
+    }
+
+    // track state name as document title
+    if (documentTitle) {
+        window._paq.push(["setDocumentTitle", documentTitle]);
+    }
+
+    window._paq.push(
+        // remove all previously assigned custom variables
+        ["deleteCustomVariables", "page"],
+
+        // ppdating the page generation time
+        ["setGenerationTimeMs", 0],
+    );
+
+    // optional features
+    features.forEach(([key, val]) => {
+        window._paq.push([key, typeof val === "function" ? val() : val]);
+    });
+
+    // start tracking
+    window._paq.push(
+        // log a visit to this page
+        ["trackPageView"],
+
+        // measure outlinks and downloads
+        ["enableLinkTracking"],
+    );
+};
+
+
+/**
+ * custom tracking
+ */
+export const track = ({ customUrl = null, referrerUrl = null, documentTitle = null, features = [] }) => {
+    if (!window._paq) {
+        throw new Error("Matomo has not been initilized as router5 plugin.");
+    }
+
+    setTracking(customUrl, referrerUrl, documentTitle, features);
+};
+
+
+/**
+ * router5 plugin
+ */
+export default ({ trackerUrl, siteId, features = [] }) => () => {
     if (!trackerUrl || !siteId) {
         return {};
     }
@@ -24,37 +79,11 @@ export default ({trackerUrl, siteId, features = []}) => () => {
 
     return {
         onTransitionSuccess: (toState, fromState) => {
-            // default features
-            window._paq.push(
-                // track new page view
-                ["setCustomUrl", toState.path],
-
-                // track referrel page url
-                ["setReferrerUrl", fromState ? fromState.path : ""],
-
-                // track state name as document title
-                ["setDocumentTitle", toState.name],
-
-                // remove all previously assigned custom variables
-                ["deleteCustomVariables", "page"],
-
-                // ppdating the page generation time
-                ["setGenerationTimeMs", 0],
-            );
-
-            // optional features
-            features.forEach(([key, val]) => {
-                window._paq.push([key, typeof val === "function" ? val() : val]);
-            });
-
-            // start tracking
-            window._paq.push(
-                // log a visit to this page
-                ["trackPageView"],
-
-                // measure outlinks and downloads
-                ["enableLinkTracking"],
-            );
+            const customUrl = toState.path;
+            const referrerUrl = fromState ? fromState.path : "";
+            const documentTitle = toState.name;
+            
+            setTracking(customUrl, referrerUrl, documentTitle, features);
         }
     };
 };

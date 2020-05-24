@@ -7,7 +7,7 @@
 
 ## How does it work?
 
-`matomo-router5-plugin` will send tracking data when router5 triggers `onTransitionSuccess`.
+`matomo-router5-plugin` will send tracking data when router5 triggers `onTransitionSuccess`. Custom tracking is also available when needed.
 
 
 ## What does it track?
@@ -40,6 +40,8 @@ npm install --save matomo-router5-plugin
 
 ## Usage
 
+### initialize as router5 plugin
+
 for additional tracking features, see [matomo guide](https://developer.matomo.org/guides/tracking-javascript-guide). These features will be tracked along with default tracking features.
 ```js
 import matomoPlugin from "matomo-router5-plugin";
@@ -49,17 +51,29 @@ const router = createRouter();
 const matomoOptions = {
   trackerUrl: "https://matomo.siteurl.com", // Required.
   siteId: 1, // Required.
-  features: [] // Optional. Additional tracking features.
+  features: [], // Optional. Additional tracking features.
 };
 
 router.usePlugin(matomoPlugin(matomoOptions));
 ```
 
-You can pass in a function as tracking feature (since 0.2.0).
-The function will be evaluated at time of tracking.
+You can pass in a function as tracking feature. The function will be evaluated at time of tracking.
 
 ```js
 features: [
   ["setUserId", () => user ? user.name : "Anonymous User"]
 ]
+```
+
+### custom tracking
+
+```js
+import { track } from "matomo-router5-plugin";
+
+track({
+  customUrl: "custom url", // Optional.
+  referrerUrl: "custom referrer url", // Optional.
+  documentTitle: "custom doc title", // Optional.
+  features: [], // Optional. Additional tracking features.
+});
 ```
