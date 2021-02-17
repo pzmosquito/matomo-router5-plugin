@@ -53,7 +53,9 @@ export const track = ({ customUrl = null, referrerUrl = null, documentTitle = nu
 /**
  * router5 plugin
  */
-export default ({ trackerUrl, siteId, features = [] }) => () => {
+export default ({ trackerUrl, siteId, features = [], usePiwik = true }) => () => {
+    const svcName = usePiwik ? "piwik" : "matomo";
+    
     if (!trackerUrl || !siteId) {
         return {};
     }
@@ -62,7 +64,7 @@ export default ({ trackerUrl, siteId, features = [] }) => () => {
     const elem = document.createElement("script");
     elem.async = true;
     elem.defer = true;
-    elem.src = `${trackerUrl}/piwik.js`;
+    elem.src = `${trackerUrl}/${svcName}.js`;
 
     // insert piwik script tag before first script tag
     const firstScript = document.getElementsByTagName("script")[0];
@@ -73,7 +75,7 @@ export default ({ trackerUrl, siteId, features = [] }) => () => {
 
     // set Matomo setting
     window._paq.push(
-        ["setTrackerUrl", `${trackerUrl}/piwik.php`],
+        ["setTrackerUrl", `${trackerUrl}/${svcName}.php`],
         ["setSiteId", siteId]
     );
 

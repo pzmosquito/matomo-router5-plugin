@@ -51,7 +51,8 @@ const router = createRouter();
 const matomoOptions = {
   trackerUrl: "https://matomo.siteurl.com", // Required.
   siteId: 1, // Required.
-  features: [], // Optional. Additional tracking features.
+  features: [], // Optional, default `[]`. Additional tracking features.
+  usePiwik: true, // Optional, default `true`. Set to `true` to use `piwik.js` and `piwik.php`; else use `matomo.js` and `matomo.php`.
 };
 
 router.usePlugin(matomoPlugin(matomoOptions));
