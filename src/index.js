@@ -14,14 +14,6 @@ const setTracking = (customUrl, referrerUrl, documentTitle, features) => {
         window._paq.push(["setDocumentTitle", documentTitle]);
     }
 
-    window._paq.push(
-        // remove all previously assigned custom variables
-        ["deleteCustomVariables", "page"],
-
-        // ppdating the page generation time
-        ["setGenerationTimeMs", 0],
-    );
-
     // optional features
     features.forEach(([key, val]) => {
         window._paq.push([key, typeof val === "function" ? val() : val]);
